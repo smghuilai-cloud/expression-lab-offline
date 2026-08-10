@@ -1,0 +1,12 @@
+{
+  "name": "表达实验室 · 每日离线表达练习",
+  "short_name": "表达实验室",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8fbfa",
+  "theme_color": "#74cdb6",
+  "description": "用四种表达镜头练习讲故事、说事情、讲观点和接对话。"
+}
+
