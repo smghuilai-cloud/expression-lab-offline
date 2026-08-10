@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#74cdb6">
+  <meta name="description" content="每天 10 分钟，练习把话说清楚。支持离线使用、每日打卡、录音复盘和 14 天训练。">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+  <title>表达实验室 · 离线练习</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">↗</span>
+        <div>
+          <div class="brand-kicker">离线表达训练</div>
+          <div class="brand-name">表达实验室</div>
+        </div>
+      </div>
+      <button class="circle-button" type="button" data-action="show-help" aria-label="使用说明">?</button>
+    </header>
+
+    <main>
+      <section id="home-screen" class="screen active" aria-labelledby="home-title">
+        <div class="hero-card">
+          <div class="hero-orb hero-orb-one"></div>
+          <div class="hero-orb hero-orb-two"></div>
+          <div class="hero-copy">
+            <div class="eyebrow">一人一部手机，也能每天练</div>
+            <h1 id="home-title">今天只练<br><span>一个表达动作。</span></h1>
+            <p>先抓结构，再接住别人<br>把“会说”变成“说清楚”。</p>
+          </div>
+          <div class="hero-sticker" aria-hidden="true"><span>↗</span><small>每天<br>一点点</small></div>
+        </div>
+
+        <section class="progress-card" aria-label="训练进度">
+          <div class="progress-main">
+            <div class="progress-day"><span>第</span><strong id="current-day">1</strong><span>/14 天</span></div>
+            <div class="progress-text"><strong id="progress-title">从结构感开始</strong><span id="progress-subtitle">今天完成一段脱稿复述</span></div>
+          </div>
+          <div class="progress-track"><span id="progress-fill"></span></div>
+          <div class="progress-footer"><span>已完成 <b id="completed-count">0</b> 次</span><span>连续 <b id="streak-count">0</b> 天</span></div>
+        </section>
+
+        <section class="continue-card">
+          <div class="section-label"><span class="label-dot"></span> 本日任务</div>
+          <div class="continue-body">
+            <div>
+              <div class="continue-stage" id="today-stage">DAY 01 · 结构感</div>
+              <h2 id="today-title">三句话说清一件事</h2>
+              <p id="today-summary">用“结果—原因—影响”把一件小事讲完整。</p>
+            </div>
+            <div class="mini-illustration" aria-hidden="true"><span>1</span><i></i><span>2</span><i></i><span>3</span></div>
+          </div>
+          <button class="primary-button full" type="button" data-action="start-today"><span id="today-button-text">打开今天的练习</span><b>→</b></button>
+        </section>
+
+        <section class="quick-section" aria-label="练习入口">
+          <div class="section-heading"><h2>训练工具</h2><span>按你的需要选择</span></div>
+          <div class="quick-grid">
+            <button class="quick-card mint" type="button" data-action="start-today"><span class="quick-icon">01</span><span><strong>今天说什么</strong><small>阅读 → 复述 → 复盘</small></span><b>›</b></button>
+            <button class="quick-card blue" type="button" data-action="show-plan"><span class="quick-icon">02</span><span><strong>训练地图</strong><small>14 天，从结构到互动</small></span><b>›</b></button>
+            <button class="quick-card peach" type="button" data-action="show-free"><span class="quick-icon">03</span><span><strong>四种表达镜头</strong><small>故事 / 事情 / 观点 / 对话</small></span><b>›</b></button>
+            <button class="quick-card yellow" type="button" data-action="show-quiz"><span class="quick-icon">04</span><span><strong>对话拆解</strong><small>先共情，再具体追问</small></span><b>›</b></button>
+            <button class="quick-card violet" type="button" data-action="show-boundary"><span class="quick-icon">05</span><span><strong>边界工作台</strong><small>我的课题 / 你的课题 / 共同课题</small></span><b>›</b></button>
+            <button class="quick-card gray" type="button" data-action="show-records"><span class="quick-icon">06</span><span><strong>复盘仓</strong><small>看见卡顿，也看见进步</small></span><b>›</b></button>
+          </div>
+        </section>
+
+        <section class="tip-card">
+          <span class="tip-icon">↳</span>
+          <div><strong>一句话开口器</strong><p>先说结论，再说原因，最后告诉对方下一步。</p></div>
+        </section>
+      </section>
+
+      <section id="train-screen" class="screen" aria-labelledby="train-title">
+        <div class="page-heading"><button class="back-button" type="button" data-action="go-home">‹</button><div><div class="eyebrow" id="train-stage">DAY 01 · 结构感</div><h1 id="train-title">今日训练</h1></div><span class="offline-pill">离线</span></div>
+        <div class="stepper" aria-label="训练步骤"><div class="step active" data-step-indicator="0"><b>1</b><span>阅读</span></div><i></i><div class="step" data-step-indicator="1"><b>2</b><span>复述</span></div><i></i><div class="step" data-step-indicator="2"><b>3</b><span>复盘</span></div></div>
+        <div id="train-content"></div>
+      </section>
+
+      <section id="plan-screen" class="screen" aria-labelledby="plan-title">
+        <div class="page-heading"><button class="back-button" type="button" data-action="go-home">‹</button><div><div class="eyebrow">循序渐进</div><h1 id="plan-title">14 天集训</h1></div></div>
+        <div class="simple-intro"><strong>先练结构，再练细节。</strong><p>每天只完成一小段，建立自己的表达系统。</p></div>
+        <div id="plan-list" class="plan-list"></div>
+      </section>
+
+      <section id="free-screen" class="screen" aria-labelledby="free-title">
+        <div class="page-heading"><button class="back-button" type="button" data-action="go-home">‹</button><div><div class="eyebrow">选一个表达镜头</div><h1 id="free-title">结构练习</h1></div></div>
+        <div class="free-card">
+          <div class="section-label"><span class="label-dot"></span> 选择表达结构</div>
+          <div id="framework-picker" class="framework-picker"></div>
+          <div class="topic-card"><div class="topic-tag">今日关键词</div><h2 id="free-topic">潮汕功夫茶的等待</h2><p id="free-prompt">用“定义—细节—观点”说满 60 秒。</p><button class="text-button" type="button" data-action="random-topic">换一个主题 ↻</button></div>
+          <div class="timer-panel"><div class="timer-label">准备好后开始计时</div><div class="timer-display" data-timer-display>01:00</div><button class="timer-button" type="button" data-action="toggle-timer">开始计时</button></div>
+          <label class="field-label" for="free-notes">练习记录（可选）</label><textarea id="free-notes" class="notes-input" placeholder="写下关键词，或者记一句复盘……"></textarea>
+          <div class="button-row"><button class="primary-button" type="button" data-action="save-free">保存这次练习</button><button class="outline-button" type="button" data-action="show-challenge">60 秒抽签</button></div>
+        </div>
+      </section>
+
+      <section id="quiz-screen" class="screen" aria-labelledby="quiz-title">
+        <div class="page-heading"><button class="back-button" type="button" data-action="go-home">‹</button><div><div class="eyebrow">把对话接住</div><h1 id="quiz-title">问答练习</h1></div><span class="score-pill" id="quiz-score">0 分</span></div>
+        <div id="quiz-content"></div>
+      </section>
+
+      <section id="challenge-screen" class="screen" aria-labelledby="challenge-title">
+        <div class="page-heading"><button class="back-button" type="button" data-action="go-home">‹</button><div><div class="eyebrow">不准备，也能说</div><h1 id="challenge-title">60 秒挑战</h1></div></div>
+        <div id="challenge-content"></div>
+      </section>
+
+      <section id="boundary-screen" class="screen" aria-labelledby="boundary-title">
+        <div class="page-heading"><button class="back-button" type="button" data-action="go-home">‹</button><div><div class="eyebrow">减少不必要的内耗</div><h1 id="boundary-title">边界工作台</h1></div></div>
+        <div id="boundary-content"></div>
+      </section>
+
+      <section id="records-screen" class="screen" aria-labelledby="records-title">
+        <div class="page-heading"><button class="back-button" type="button" data-action="go-home">‹</button><div><div class="eyebrow">看见自己的变化</div><h1 id="records-title">我的记录</h1></div></div>
+        <div id="records-content"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主导航">
+      <button type="button" class="nav-item active" data-action="go-home"><span>⌂</span><small>首页</small></button>
+      <button type="button" class="nav-item" data-action="start-today"><span>↗</span><small>任务</small></button>
+      <button type="button" class="nav-item" data-action="show-free"><span>⌘</span><small>结构</small></button>
+      <button type="button" class="nav-item" data-action="show-records"><span>◷</span><small>记录</small></button>
+    </nav>
+  </div>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-backdrop" data-action="close-modal"></div>
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" data-action="close-modal" aria-label="关闭">×</button>
+      <h2 id="modal-title">如何使用</h2>
+      <div id="modal-body"></div>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
+
